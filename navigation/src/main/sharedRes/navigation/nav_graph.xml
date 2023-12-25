@@ -18,9 +18,5 @@
         android:name="com.enes.feature.home.presentation.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
-        <argument
-            android:name="name_a"
-            app:argType="string"
-            android:defaultValue="enes"/>
     </fragment>
 </navigation>

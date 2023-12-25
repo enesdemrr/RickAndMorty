@@ -13,7 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val args: HomeFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,7 +30,7 @@ class HomeFragment : Fragment() {
     private fun bindUI() {
         binding.apply {
             button.setOnClickListener {
-                button.text = args.nameA
+
             }
         }
     }

@@ -35,7 +35,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     private fun bindUI() {
         binding.apply {
             button.setOnClickListener {
-                findNavController().navigate(com.enes.navigation.R.id.action_loginFragment_to_homeFragment)
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
             }
         }
     }
