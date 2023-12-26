@@ -53,4 +53,5 @@ dependencies {
     val nav_version = "2.7.6"
     api("androidx.navigation:navigation-fragment-ktx:$nav_version")
     api("androidx.navigation:navigation-ui-ktx:$nav_version")
+    api("io.coil-kt:coil:2.5.0")
 }

@@ -39,7 +39,9 @@ android {
 
 dependencies {
     implementation(projects.navigation)
+    implementation(projects.common.data)
     implementation(projects.common.presentation)
+    implementation(projects.feature.home.domain)
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
@@ -51,4 +53,5 @@ dependencies {
     val nav_version = "2.7.6"
     api("androidx.navigation:navigation-fragment-ktx:$nav_version")
     api("androidx.navigation:navigation-ui-ktx:$nav_version")
+
 }

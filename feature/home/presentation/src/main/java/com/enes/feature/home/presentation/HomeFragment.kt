@@ -1,11 +1,12 @@
 package com.enes.feature.home.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.enes.feature.home.presentation.adapter.HomeAdapter
 import com.enes.feature.home.presentation.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -13,6 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: HomeViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,13 +28,19 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindUI()
+        bindViewModel()
+
     }
 
     private fun bindUI() {
-        binding.apply {
-            button.setOnClickListener {
-
-            }
+        val adapter = HomeAdapter()
+        viewModel.characterList.observe(viewLifecycleOwner){
+            adapter.submitList(it)
         }
+        binding.recyclerView.adapter = adapter
+    }
+    private fun bindViewModel()= with(binding){
+        viewModel.getAllCharacter()
+
     }
 }

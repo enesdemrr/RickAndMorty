@@ -9,12 +9,14 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     @Provides
+    @Singleton
     fun provideHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .readTimeout(30L, TimeUnit.SECONDS)
@@ -24,11 +26,14 @@ object NetworkModule {
     }
 
     @Provides
+    @Singleton
     fun provideGsonConverterFactory(): GsonConverterFactory {
         val gson = GsonBuilder().setLenient().create()
         return GsonConverterFactory.create(gson)
     }
 
+    @Provides
+    @Singleton
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
