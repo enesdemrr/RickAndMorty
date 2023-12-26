@@ -1,1 +1,1 @@
-![image](https://github.com/enesdemrr/RickAndMorty/assets/92523630/8fe9341e-7259-4dc4-84a5-4bdd25bb5f42)
+![image](https://github.com/enesdemrr/RickAndMorty/assets/92523630/1255f009-6907-43c5-84c3-630bce6bdc72)
