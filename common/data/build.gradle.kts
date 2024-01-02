@@ -37,8 +37,8 @@ android {
 dependencies {
 
 //Hilt
-    api("com.google.dagger:hilt-android:2.49")
-    ksp("com.google.dagger:hilt-compiler:2.49")
+    api("com.google.dagger:hilt-android:2.50")
+    ksp("com.google.dagger:hilt-compiler:2.50")
 
     //retrofit
     api("com.squareup.retrofit2:retrofit:2.9.0")

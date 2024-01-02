@@ -32,7 +32,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     }
 
-    private fun bindUI() {
+    override fun bindUI() {
         binding.apply {
             button.setOnClickListener {
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())

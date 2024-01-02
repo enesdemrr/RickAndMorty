@@ -16,9 +16,9 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewRickAndMortyHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: ResultEntity) = with(binding) {
-            title.text = item.species.orEmpty()
-            subtitleFirst.text = item.status.orEmpty()
-            subtitleSecond.text = item.name
+            title.text = item.name
+            subtitleFirst.text = item.species.orEmpty()
+            subtitleSecond.text = item.status.orEmpty()
             imageView.load(item.image)
             root.setOnClickListener { setItemClickListener.invoke(item) }
         }

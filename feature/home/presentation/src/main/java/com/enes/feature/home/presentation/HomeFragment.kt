@@ -1,46 +1,35 @@
 package com.enes.feature.home.presentation
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.enes.common.presentation.BaseFragment
+import com.enes.common.presentation.utils.fragmentViewBinding
 import com.enes.feature.home.presentation.adapter.HomeAdapter
 import com.enes.feature.home.presentation.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel: HomeViewModel by viewModels()
+class HomeFragment : BaseFragment(R.layout.fragment_home) {
+    override val binding by fragmentViewBinding(FragmentHomeBinding::bind)
+    override val viewModel: HomeViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentHomeBinding.inflate(layoutInflater)
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        bindUI()
-        bindViewModel()
-
-    }
-
-    private fun bindUI() {
+    override fun bindUI() {
         val adapter = HomeAdapter()
-        viewModel.characterList.observe(viewLifecycleOwner){
+        viewModel.characterList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
         binding.recyclerView.adapter = adapter
+        adapter.setItemClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToDetailFragment(
+                    it.id.toString()
+                )
+            )
+        }
     }
-    private fun bindViewModel()= with(binding){
-        viewModel.getAllCharacter()
 
+    override fun bindViewModel() {
+        viewModel.getAllCharacter()
     }
 }

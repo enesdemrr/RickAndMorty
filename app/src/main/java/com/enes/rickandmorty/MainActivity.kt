@@ -1,21 +1,20 @@
 package com.enes.rickandmorty
 
 import android.os.Bundle
-import androidx.viewbinding.ViewBinding
-import com.enes.common.presentation.BaseViewModel
-import com.enes.common.presentation.activity.BaseActivity
-import com.enes.common.presentation.utils.viewBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.enes.rickandmorty.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
-    override val binding by viewBinding(ActivityMainBinding::inflate)
-    override val viewModel: BaseViewModel
-        get() = TODO("Not yet implemented")
+class MainActivity : AppCompatActivity() {
+
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
+    //lateinit var name: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 }
